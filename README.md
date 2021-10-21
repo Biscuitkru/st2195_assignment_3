@@ -1,5 +1,7 @@
 # st2195_assignment_3
- 
+
+This is done with reference to Data Expo 2009 data, and the Harvard Dataverse(https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/HG7NV7)
+
 1. Create a folder called “r_sql” with a R code for constructing the database (from the csv inputs) and replicating the queries in the practice quiz 
    (see Additional Notes section for list of queries Q1 to Q4). The latter should be done both using DBI and dplyr notation [1.75 points each]
    
