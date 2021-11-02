@@ -1,6 +1,9 @@
 library(DBI)
 library(dplyr)
 
+
+conn <- dbConnect(RSQLite::SQLite(), "airline2.db")
+
 airports <- read.csv("airports.csv", header = TRUE)
 carriers <- read.csv("carriers.csv", header = TRUE)
 planes <- read.csv("plane-data.csv", header = TRUE)
@@ -12,18 +15,16 @@ four <- read.csv("2004.csv", header = TRUE)
 five <- read.csv("2005.csv", header = TRUE)
 ontime <- rbind(zero, one, two, three, four, five)
 #or
-for(i in c(2000:2005)) {
-  filename <- paste0("./Block 3/", i , ".csv")
-  print(paste("Processing:", i))
-  ontime <- read.csv(filename, header = TRUE)
-  if (i == 2000) {
-  dbWriteTable(conn, "ontime", ontime)
-  } else {
-  dbWriteTable(conn, "ontime", ontime, append = TRUE)
- }
-}
-
-conn <- dbConnect(RSQLite::SQLite(), "airline2.db")
+# for(i in c(2000:2005)) {
+#  filename <- paste0("./Block 3/", i , ".csv")
+#  print(paste("Processing:", i))
+#  ontime <- read.csv(filename, header = TRUE)
+#  if (i == 2000) {
+#  dbWriteTable(conn, "ontime", ontime)
+#  } else {
+#  dbWriteTable(conn, "ontime", ontime, append = TRUE)
+# }
+#}
 
 dbWriteTable(conn, "Airports", airports)
 dbWriteTable(conn, "Carriers", carriers)
